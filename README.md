@@ -40,7 +40,32 @@ npm install && npm run build
 
 ### 3. Configure Claude Code
 
-Add to your Claude Code MCP settings (`~/.claude/settings.json` or project `.claude/settings.json`):
+Run the setup script — it prompts for your credentials, verifies them, and writes the MCP config to `~/.claude/settings.json` automatically:
+
+```bash
+openclaw-mcp-setup
+```
+
+If installed from source:
+
+```bash
+node dist/setup.js
+```
+
+You'll need:
+- Your Matrix access token (Element: **Settings > Help & About > Access Token**)
+- The room ID (Element: **Room Settings > Advanced > Internal room ID**)
+- Your OpenClaw bot's Matrix user ID (e.g. `@zofka:matrix.org`)
+
+The script validates your token and room access before writing the config.
+
+### 4. Restart Claude Code
+
+After setup, restart Claude Code to activate the MCP server.
+
+### Manual configuration
+
+If you prefer to configure manually, add to `~/.claude/settings.json`:
 
 ```json
 {
@@ -56,32 +81,6 @@ Add to your Claude Code MCP settings (`~/.claude/settings.json` or project `.cla
   }
 }
 ```
-
-If installed from source, use the full path:
-
-```json
-{
-  "mcpServers": {
-    "openclaw": {
-      "command": "node",
-      "args": ["/path/to/openclaw-mcp/dist/index.js"],
-      "env": {
-        "OPENCLAW_MATRIX_TOKEN": "your-matrix-access-token",
-        "OPENCLAW_MATRIX_ROOM": "!roomid:matrix.org",
-        "OPENCLAW_BOT_USER_ID": "@yourbot:matrix.org"
-      }
-    }
-  }
-}
-```
-
-### 4. Get your Matrix access token
-
-In Element: **Settings > Help & About > Access Token** (at the bottom).
-
-### 5. Find your room ID
-
-In Element: **Room Settings > Advanced > Internal room ID**.
 
 ### Environment variables
 
@@ -102,7 +101,7 @@ Once configured, just talk naturally in Claude Code:
 
 ## Note on encryption
 
-This MCP server uses the Matrix HTTP API directly without E2E encryption support. Make sure your room has encryption **disabled**, or the bot won't be able to read messages sent through this bridge.
+This MCP server uses the Matrix HTTP API directly without E2E encryption support. For encrypted rooms, use [matrix-e2ee-bridge](https://github.com/elkimek/matrix-e2ee-bridge) instead.
 
 ## License
 

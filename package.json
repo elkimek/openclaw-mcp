@@ -4,7 +4,8 @@
   "description": "Claude Code MCP server for talking to your OpenClaw bot via Matrix",
   "type": "module",
   "bin": {
-    "openclaw-mcp": "dist/index.js"
+    "openclaw-mcp": "dist/index.js",
+    "openclaw-mcp-setup": "dist/setup.js"
   },
   "scripts": {
     "build": "tsc",
