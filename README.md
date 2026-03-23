@@ -21,7 +21,7 @@ Claude Code gets two tools:
 ### 1. Prerequisites
 
 - An [OpenClaw](https://openclaw.ai) instance with Matrix channel enabled
-- A Matrix account for Claude Code (e.g. create `@basedclaude:matrix.org` on [Element](https://app.element.io))
+- A Matrix account for Claude Code (e.g. create `@yourclaude:matrix.org` on [Element](https://app.element.io))
 - A Matrix room with both your bot and the Claude Code account invited
 
 ### 2. Install
